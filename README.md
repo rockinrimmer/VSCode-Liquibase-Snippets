@@ -11,6 +11,10 @@ Liquibase XML Snippets
 
 ![Example](images/example.gif)
 
+### 1.0.1
+
+Add MIT License
+
 ### 1.0.0
 
 Initial release
