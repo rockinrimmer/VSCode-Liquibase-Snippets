@@ -21,6 +21,9 @@
         "Programming Languages",
         "Snippets"
     ],
+    "keywords": [
+        "Liquibase"
+      ],
     "contributes": {
         "snippets": [
             {
