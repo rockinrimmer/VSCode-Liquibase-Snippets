@@ -1,0 +1,32 @@
+{
+    "name": "liquibase-snippets",
+    "displayName": "Liquibase Snippets",
+    "description": "A VSCode extension that provides liquibase snippets.",
+    "version": "1.0.0",
+    "publisher": "chris-rimmer",
+    "icon": "images/icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rockinrimmer/VSCode-Liquibase-Snippets.git"
+      },
+      "bugs": {
+        "url": "https://github.com/rockinrimmer/VSCode-Liquibase-Snippets/issues"
+      },
+      "homepage": "https://github.com/rockinrimmer/VSCode-Liquibase-Snippets#readme",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.23.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "xml",
+                "path": "./snippets/xml.json"
+            }
+        ]
+    }
+}

@@ -1,0 +1,548 @@
+{
+    "Create Changeset": {
+        "prefix": "changeset",
+        "body": [
+            "<changeSet id=\"${id}\" author=\"${author}\">",
+            "  ${0}",
+            "</changeSet>"
+        ],
+        "description": "Create a new changeset"
+    },
+    "Changeset Attr dbms": {
+        "prefix": "dbms",
+        "body": [
+            "dbms=\"${0}\""
+        ],
+        "description": " dbms attribute for a changeSet. The type of a database which that changeSet is to be used for. When the migration step is running, it checks the database type against this attribute. Valid database type names are listed on the supported databases page https://www.liquibase.org/databases.html"
+    },
+    "Changeset Attr runAlways": {
+        "prefix": "runAlways",
+        "body": [
+            "runAlways=\"${true}\""
+        ],
+        "description": "runAlways attribute for a changeSet. Executes the change set on every run, even if it has been run before."
+    },
+    "Changeset Attr runOnChange": {
+        "prefix": "runOnChange",
+        "body": [
+            "runOnChange=\"${true}\""
+        ],
+        "description": "runOnChange attribute for a changest. Executes the change the first time it is seen and each time the change set has been changed"
+    },
+    "Changeset Attr context": {
+        "prefix": "context",
+        "body": [
+            "context=\"${0}\""
+        ],
+        "description": "context attribute for a changeset. Executes the change if the particular context was passed at runtime. Any string can be used for the context name and they are checked case-insensitively."
+    },
+    "Changeset Attr runInTransaction": {
+        "prefix": "runInTransaction",
+        "body": [
+            "runInTransaction=\"${false}\""
+        ],
+        "description": "runInTransaction attribute for a changeset. Should the changeSet be ran as a single transaction (if possible)? Defaults to true. Warning: be careful with this attribute. If set to false and an error occurs part way through running a changeSet containing multiple statements, the Liquibase databasechangelog table will be left in an invalid state. Since 1.9"
+    },
+    "Changeset Attr failOnError": {
+        "prefix": "failOnError",
+        "body": [
+            "failOnError=\"${false}\""
+        ],
+        "description": "failOnError attribute for a changeset. Should the migration fail if an error occurs while executing the changeSet?"
+    },
+    "Add Auto Increment": {
+        "prefix": "addAutoIncrement",
+        "body": [
+            "<addAutoIncrement catalogName=\"${1:cat}\"",
+            "    columnDataType=\"${2:int}\"",
+            "    columnName=\"${3:column}\"",
+            "    incrementBy=\"${4:1}\"",
+            "    schemaName=\"${5:public}\"",
+            "    startWith=\"${6:1}\"",
+            "    tableName=\"${7:table}\"/>"
+        ],
+        "description": "Converts an existing column to be an auto-increment (a.k.a ‘identity’) column"
+    },
+    "Add Column": {
+        "prefix": "addColumn",
+        "body": [
+            "<addColumn catalogName=\"${cat}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${table}\">",
+            "    <column name=\"${column}\" type=\"${int}\"/>",
+            "</addColumn>"
+        ],
+        "description": "Adds a new column to an existing table"
+    },
+    "Add Default Value": {
+        "prefix": "addDefaultValue",
+        "body": [
+            "<addDefaultValue catalogName=\"${cat}\"",
+            "    columnDataType=\"int\"",
+            "    columnName=\"${column}\"",
+            "    defaultValue=\"Something Else\"",
+            "    defaultValueBoolean=\"true\"",
+            "    defaultValueComputed=\"now\"",
+            "    defaultValueDate=\"A String\"",
+            "    defaultValueNumeric=\"A String\"",
+            "    defaultValueSequenceNext=\"seq_name\"",
+            "    schemaName=\"${schema}\"",
+            "    tableName=\"${table}\"/>"
+        ],
+        "description": "Adds a default value to the database definition for the specified column. One of defaultValue, defaultValueNumeric, defaultValueBoolean or defaultValueDate must be set."
+    },
+    "Add Foreign Key Constraint": {
+        "prefix": "addForeignKeyConstraint",
+        "body": [
+            "<addForeignKeyConstraint baseColumnNames=\"${basCol}\"",
+            "    baseTableName=\"${baseTable}\"",
+            "    constraintName=\"${fk_name}\"",
+            "    deferrable=\"true\"",
+            "    initiallyDeferred=\"true\"",
+            "    onDelete=\"CASCADE\"",
+            "    onUpdate=\"RESTRICT\"",
+            "    referencedColumnNames=\"${refCol}\"",
+            "    referencedTableName=\"${refTable}\"/>"
+        ],
+        "description": "Adds a foreign key constraint to an existing column."
+    },
+    "Add Lookup Table": {
+        "prefix": "addLookupTable",
+        "body": [
+            "<addLookupTable constraintName=\"${fk_address_state}\"",
+            "    existingColumnName=\"${state}\"",
+            "    existingTableName=\"${address}\"",
+            "    newColumnDataType=\"${char(2)}\"",
+            "    newColumnName=\"${abbreviation}\"",
+            "    newTableName=\"${state}\"/>"
+        ],
+        "description": "Creates a lookup table containing values stored in a column and creates a foreign key to the new table."
+    },
+    "Add Not Null Constraint": {
+        "prefix": "addNotNullConstraint",
+        "body": [
+            "<addNotNullConstraint catalogName=\"${cat}\"",
+            "    columnDataType=\"${int}\"",
+            "    columnName=\"${id}\"",
+            "    defaultNullValue=\"${A_String}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Adds a not-null constraint to an existing table. If a defaultNullValue attribute is passed, all null values for the column will be updated to the passed value before the constraint is applied."
+    },
+    "Add Primary Key": {
+        "prefix": "addPrimaryKey",
+        "body": [
+            "<addPrimaryKey catalogName=\"${cat}\"",
+            "    columnNames=\"${id,_name}\"",
+            "    constraintName=\"${pk_person}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"",
+            "    tablespace=\"${A_String}\"/>"
+        ],
+        "description": "Adds creates a primary key out of an existing column or set of columns."
+    },
+    "Add Unique Constraint": {
+        "prefix": "addUniqueConstraint",
+        "body": [
+            "<addUniqueConstraint catalogName=\"${cat}\"",
+            "    columnNames=\"${id,_name}\"",
+            "    constraintName=\"${const_name}\"",
+            "    deferrable=\"${true}\"",
+            "    disabled=\"${true}\"",
+            "    initiallyDeferred=\"${true}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"",
+            "    tablespace=\"${A_String}\"/>"
+        ],
+        "description": "Adds a unique constrant to an existing column or set of columns."
+    },
+    "Alter Sequence": {
+        "prefix": "alterSequence",
+        "body": [
+            "<alterSequence catalogName=\"${cat}\"",
+            "    incrementBy=\"${371717}\"",
+            "    maxValue=\"${371717}\"",
+            "    minValue=\"${371717}\"",
+            "    ordered=\"${true}\"",
+            "    schemaName=\"${public}\"",
+            "    sequenceName=\"${seq_id}\"/>"
+        ],
+        "description": "Alter properties of an existing sequence."
+    },
+    "Create Index": {
+        "prefix": "createIndex",
+        "body": [
+            "<createIndex catalogName=\"${cat}\"",
+            "        indexName=\"${idx_address}\"",
+            "        schemaName=\"${public}\"",
+            "        tableName=\"${person}\"",
+            "        tablespace=\"${A_String}\"",
+            "        unique=\"${true}\">",
+            "    <column name=\"${address}\" type=\"${int}\"/>",
+            "</createIndex>"
+        ],
+        "description": "Creates an index on an existing column or set of columns."
+    },
+    "Create Procedure": {
+        "prefix": "createProcedure",
+        "body": [
+            "<createProcedure catalogName=\"${cat}\"",
+            "        comments=\"${A_String}\"",
+            "        dbms=\"${dbms}\"",
+            "        encoding=\"${utf8}\"",
+            "        path=\"${com/example/my-logic.sql}\"",
+            "        procedureName=\"${A_String}\"",
+            "        relativeToChangelogFile=\"${true}\"",
+            "        schemaName=\"${public}\">",
+            "    ${proc}",
+            "</createProcedure>"
+        ],
+        "description": "Defines the definition for a stored procedure. This command is better to use for creating procedures than the raw sql command because it will not attempt to strip comments or break up lines. Often times it is best to use the CREATE OR REPLACE syntax along with setting runOnChange=’true’ on the enclosing changeSet tag. That way if you need to make a change to your procedure you can simply change your existing code rather than creating a new REPLACE PROCEDURE call. The advantage to this approach is that it keeps your change log smaller and allows you to more easily see what has changed in your procedure code through your source control system’s diff command."
+    },
+    "Create Sequence": {
+        "prefix": "createSequence",
+        "body": [
+            "<createSequence catalogName=\"${0:cat}\"",
+            "    cycle=\"${1:true}\"",
+            "    incrementBy=\"${2:2}\"",
+            "    maxValue=\"${3:1000}\"",
+            "    minValue=\"${4:10}\"",
+            "    ordered=\"${5:true}\"",
+            "    schemaName=\"${6:public}\"",
+            "    sequenceName=\"${7:seq_id}\"",
+            "    startValue=\"${8:5}\"/>"
+        ],
+        "description": "Creates a new database sequence."
+    },
+    "Create Table": {
+        "prefix": "createTable",
+        "body": [
+            "<createTable catalogName=\"${cat}\"",
+            "        remarks=\"${remarks}\"",
+            "        schemaName=\"${public}\"",
+            "        tableName=\"${person}\"",
+            "        tablespace=\"${tablespace}\">",
+            "    <column name=\"${address}\" type=\"${int}\"/>",
+            "</createTable>"
+        ],
+        "description": "Create Table."
+    },
+    "Create View": {
+        "prefix": "createView",
+        "body": [
+            "<createView catalogName=\"${cat}\"",
+            "        replaceIfExists=\"${true}\"",
+            "        schemaName=\"${public}\"",
+            "        viewName=\"${v_person}\">",
+            "    ${sql}",
+            "</createView>"
+        ],
+        "description": "Create a new database view."
+    },
+    "Delete": {
+        "prefix": "delete",
+        "body": [
+            "<delete catalogName=\"${cat}\"",
+            "        schemaName=\"${public}\"",
+            "        tableName=\"${person}\">",
+            "    <where>${conditions}</where>",
+            "</delete"
+        ],
+        "description": "Deletes data from an existing table."
+    },
+    "Drop All Foreign Key Constraints": {
+        "prefix": "dropAllForeignKeyConstraints",
+        "body": [
+            "<dropAllForeignKeyConstraints baseTableName=\"${table}\"/>"
+        ],
+        "description": "Drops all foreign key constraints for a table."
+    },
+    "Drop Column": {
+        "prefix": "dropColumn",
+        "body": [
+            "<dropColumn catalogName=\"${cat}\"",
+            "    columnName=\"${id}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Drop an existing column."
+    },
+    "Drop Default Value": {
+        "prefix": "dropDefaultValue",
+        "body": [
+            "<dropDefaultValue catalogName=\"${cat}\"",
+            "    columnDataType=\"${int}\"",
+            "    columnName=\"${id}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Removes the database default value for a column."
+    },
+    "Drop Foreign Key Constraint": {
+        "prefix": "dropForeignKeyConstraint",
+        "body": [
+            "<dropForeignKeyConstraint baseTableName=\"${person}\" constraintName=\"${fk_address_person}\"/>"
+        ],
+        "description": "Drops an existing foreign key."
+    },
+    "Drop Index": {
+        "prefix": "dropIndex",
+        "body": [
+            "<dropIndex catalogName=\"${cat}\"",
+            "    indexName=\"${idx_address}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Drops an existing index."
+    },
+    "Drop Not Null Constraint": {
+        "prefix": "dropNotNullConstraint",
+        "body": [
+            "<dropNotNullConstraint catalogName=\"${cat}\"",
+            "    columnDataType=\"${int}\"",
+            "    columnName=\"${id}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Makes a column nullable."
+    },
+    "Drop Primary Key": {
+        "prefix": "dropPrimaryKey",
+        "body": [
+            "<dropPrimaryKey catalogName=\"${cat}\"",
+            "    constraintName=\"${const_name}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Drops an existing primary key."
+    },
+    "Drop Procedure": {
+        "prefix": "dropProcedure",
+        "body": [
+            "<dropProcedure catalogName=\"${cat}\"",
+            "    procedureName=\"${full_name}\"",
+            "    schemaName=\"${public}\"/>"
+        ],
+        "description": "Drops an existing procedure."
+    },
+    "Drop Sequence": {
+        "prefix": "dropSequence",
+        "body": [
+            "<dropSequence catalogName=\"${cat}\"",
+            "    schemaName=\"${public}\"",
+            "    sequenceName=\"${seq_id}\"/>"
+        ],
+        "description": "Drops an existing sequence."
+    },
+    "Drop Table": {
+        "prefix": "dropTable",
+        "body": [
+            "<dropTable cascadeConstraints=\"${true}\"",
+            "    catalogName=\"${cat}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Drops an existing table."
+    },
+    "Drop Unique Constraint": {
+        "prefix": "dropUniqueConstraint",
+        "body": [
+            "<dropUniqueConstraint catalogName=\"${cat}\"",
+            "    constraintName=\"${const_name}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"",
+            "    uniqueColumns=\"${A_String}\"/>"
+        ],
+        "description": "Drops an existing unique constraint."
+    },
+    "Drop View": {
+        "prefix": "dropView",
+        "body": [
+            "<dropView catalogName=\"${cat}\"",
+            "    schemaName=\"${public}\"",
+            "    viewName=\"${v_person}\"/>"
+        ],
+        "description": "Drops an existing view."
+    },
+    "Insert": {
+        "prefix": "insert",
+        "body": [
+            "<insert catalogName=\"${cat}\"",
+            "        dbms=\"${dbms}\"",
+            "        schemaName=\"${public}\"",
+            "        tableName=\"${person}\">",
+            "    <column name=\"${address}\" type=\"${int}\"/>",
+            "</insert>"
+        ],
+        "description": "Inserts data into an existing table."
+    },
+    "Load Data": {
+        "prefix": "loadData",
+        "body": [
+            "<loadData catalogName=\"${cat}\"",
+            "        encoding=\"${UTF-8}\"",
+            "        file=\"${com/example/users.csv}\"",
+            "        quotchar=\"${quotchar}\"",
+            "        schemaName=\"${public}\"",
+            "        separator=\"${separator}\"",
+            "        tableName=\"${person}\">",
+            "    <column name=\"${address}\" type=\"${int}\"/>",
+            "</loadData>"
+        ],
+        "description": "Loads data from a CSV file into an existing table. A value of NULL in a cell will be converted to a database NULL rather than the string ‘NULL’. Date/Time values included in the CSV file should be in ISO format in order to be parsed correctly by Liquibase. Liquibase will initially set the date format to be ‘yyyy-MM-dd’T’HH:mm:ss’ and then it checks for two special cases which will override the data format string. If the string representing the date/time includes a ‘.’, then the date format is changed to ‘yyyy-MM-dd’T’HH:mm:ss.SSS’ If the string representing the date/time includes a space, then the date format is changed to ‘yyyy-MM-dd HH:mm:ss’ Once the date format string is set, Liquibase will then call the SimpleDateFormat.parse() method attempting to parse the input string so that it can return a Date/Time. If problems occur, then a ParseException is thrown and the input string is treated as a String for the INSERT command to be generated."
+    },
+    "Load Update Data": {
+        "prefix": "loadUpdateData",
+        "body": [
+            "<loadUpdateData catalogName=\"${cat}\"",
+            "        encoding=\"${UTF-8}\"",
+            "        file=\"${com/example/users.csv}\"",
+            "        primaryKey=\"${pk_id}\"",
+            "        quotchar=\"${quotchar}\"",
+            "        schemaName=\"${public}\"",
+            "        separator=\"${separator}\"",
+            "        tableName=\"${person}\">",
+            "    <column name=\"${address}\" type=\"${int}\"/>",
+            "</loadUpdateData>"
+        ],
+        "description": "Loads or updates data from a CSV file into an existing table. Differs from loadData by issuing a SQL batch that checks for the existence of a record. If found, the record is UPDATEd, else the record is INSERTed. Also, generates DELETE statements for a rollback. A value of NULL in a cell will be converted to a database NULL rather than the string ‘NULL’."
+    },
+    "Merge Columns": {
+        "prefix": "mergeColumns",
+        "body": [
+            "<mergeColumns catalogName=\"${cat}\"",
+            "    column1Name=\"${first_name}\"",
+            "    column2Name=\"${last_name}\"",
+            "    finalColumnName=\"${full_name}\"",
+            "    finalColumnType=\"${int}\"",
+            "    joinString=\"${A_String}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Concatenates the values in two columns, joins them by with string, and stores the resulting value in a new column."
+    },
+    "Modify Data Types": {
+        "prefix": "modifyDataType",
+        "body": [
+            "<modifyDataType catalogName=\"${cat}\"",
+            "    columnName=\"${id}\"",
+            "    newDataType=\"${int}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Modify data type."
+    },
+    "Rename Column": {
+        "prefix": "renameColumn",
+        "body": [
+            "<renameColumn catalogName=\"${cat}\"",
+            "    columnDataType=\"${int}\"",
+            "    newColumnName=\"${oldColumnName}\"",
+            "    oldColumnName=\"${oldColumnName}\"",
+            "    remarks=\"${A_String}\"",
+            "    schemaName=\"${public}\"",
+            "    tableName=\"${person}\"/>"
+        ],
+        "description": "Renames an existing column."
+    },
+    "Rename Table": {
+        "prefix": "renameTable",
+        "body": [
+            "<renameTable catalogName=\"${cat}\"",
+            "    newTableName=\"${newTableName}\"",
+            "    oldTableName=\"${oldTableName}\"",
+            "    schemaName=\"${public}\"/>"
+        ],
+        "description": "Renames an existing table."
+    },
+    "Rename View": {
+        "prefix": "renameView",
+        "body": [
+            "<renameView catalogName=\"${cat}\"",
+            "    newViewName=\"${newViewName}\"",
+            "    oldViewName=\"${oldViewName}\"",
+            "    schemaName=\"${public}\"/>"
+        ],
+        "description": "Renames an existing view."
+    },
+    "SQL": {
+        "prefix": "sql",
+        "body": [
+            "<sql dbms=\"${dbms}\"",
+            "        endDelimiter=\"${\nGO}\"",
+            "        splitStatements=\"${true}\"",
+            "        stripComments=\"${false}\">",
+            "    ${0}",
+            "    <comment>Comment</comment>",
+            "</sql>"
+        ],
+        "description": "The ‘sql’ tag allows you to specify whatever sql you want. It is useful for complex changes that aren’t supported through Liquibase’s automated refactoring tags and to work around bugs and limitations of Liquibase. The SQL contained in the sql tag can be multi-line. The createProcedure refactoring is the best way to create stored procedures. The ‘sql’ tag can also support multiline statements in the same file. Statements can either be split using a ; at the end of the last line of the SQL or a go on its own on the line between the statements can be used.Multiline SQL statements are also supported and only a ; or go statement will finish a statement, a new line is not enough. Files containing a single statement do not need to use a ; or go. The sql change can also contain comments of either of the following formats: A multiline comment that starts with /* and ends with */. A single line comment starting with <space>–<space> and finishing at the end of the line Note: By default it will attempt to split statements on a ‘;’ or ‘go’ at the end of lines. Because of this, if you have a comment or some other non-statement ending ‘;’ or ‘go’, don’t have it at the end of a line or you will get invalid SQL."
+    },
+    "SQL File": {
+        "prefix": "sqlFile",
+        "body": [
+            "<sqlFile dbms=\"${dbms}\"",
+            "    encoding=\"${utf8}\"",
+            "    endDelimiter=\"${\nGO}\"",
+            "    path=\"${my/path/file.sql}\"",
+            "    relativeToChangelogFile=\"${true}\"",
+            "    splitStatements=\"${true}\"",
+            "    stripComments=\"${true}\"/>"
+        ],
+        "description": "The ‘sqlFile’ tag allows you to specify any sql statements and have it stored external in a file. It is useful for complex changes that are not supported through LiquiBase’s automated refactoring tags such as stored procedures. The sqlFile refactoring finds the file by searching in the following order: The file is searched for in the classpath. This can be manually set and by default the liquibase startup script adds the current directory when run. The file is searched for using the file attribute as a file name. This allows absolute paths to be used or relative paths to the working directory to be used. The ‘sqlFile’ tag can also support multiline statements in the same file. Statements can either be split using a ; at the end of the last line of the SQL or a go on its own on the line between the statements can be used.Multiline SQL statements are also supported and only a ; or go statement will finish a statement, a new line is not enough. Files containing a single statement do not need to use a ; or go. The sql file can also contain comments of either of the following formats: A multiline comment that starts with /* and ends with */. A single line comment starting with <space>–<space> and finishing at the end of the line"
+    },
+    "Tag Database": {
+        "prefix": "tagDatabase",
+        "body": [
+            "<tagDatabase tag=\"${version_1}\"/>"
+        ],
+        "description": "Applies a tag to the database for future rollback"
+    },
+    "Rollback": {
+        "prefix": "rollback",
+        "body": [
+            "<rollback>",
+            "    ${0}",
+            "</rollback>"
+        ],
+        "description": "Liquibase allows you to undo changes you have made to your database, either automatically or via custom rollback SQL. Rollback support is available in command_line, Ant, and Maven."
+    },
+    "Pre-Conditions": {
+        "prefix": "preConditions",
+        "body": [
+            "<preConditions>",
+            "    ${0}",
+            "</preConditions>"
+        ],
+        "description": "Preconditions can be attached to change logs or changesets to control the execution of an update based on the state of the database. There are several reasons to use preconditions, including: Document what assumptions the writers of the changelog had when creating it. Enforce that those assumptions are not violated by users running the changelog. Perform data checks before performing an unrecoverable change such as drop_Table. Control what changesets are run and not run based on the state of the database. If desired, a precondition can be the only tag in a <changeSet>. Preconditions at the changelog level apply to all changesets, not just those listed in the current changelog or its child changelogs."
+    },
+    "Database Change Log": {
+        "prefix": "databaseChangeLog",
+        "body": [
+            "<databaseChangeLog",
+            "    xmlns=\"http://www.liquibase.org/xml/ns/dbchangelog\"",
+            "    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
+            "    xmlns:ext=\"http://www.liquibase.org/xml/ns/dbchangelog-ext\"",
+            "    xsi:schemaLocation=\"http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd",
+            "    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd\">",
+            "   ${0}",
+            "</databaseChangeLog>"
+        ],
+        "description": "The root of all Liquibase changes is the databaseChangeLog file."
+    },
+    "Include": {
+        "prefix": "include",
+        "body": [
+            "<include file=\"${com/example/directory/directory.changelog.xml}\"/>"
+        ],
+        "description": "The include tag allows you to break up your change-logs into more manageable pieces. To easily include multiple files, use the includeAll tag."
+    },
+    "Column": {
+        "prefix": "column",
+        "body": [
+            "<column name=\"${column}\" type=\"${int}\"/>"
+        ],
+        "description": "The “column” tag is a tag that is re-used throughout the Liquibase XML when column definitions and column information is needed. As a result, not all the attributes of column make sense in each context it is used in."
+    }
+}
