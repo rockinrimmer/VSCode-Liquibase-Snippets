@@ -544,5 +544,34 @@
             "<column name=\"${column}\" type=\"${int}\"/>"
         ],
         "description": "The “column” tag is a tag that is re-used throughout the Liquibase XML when column definitions and column information is needed. As a result, not all the attributes of column make sense in each context it is used in."
+    },
+    "Column Full": {
+        "prefix": "columnFull",
+        "body": [
+            "<column",
+            "    name=\"${name}\"",
+            "    type=\"${type}\"",
+            "    value=\"${value}\"",
+            "    computed=\"${computed}\"",
+            "    valueNumeric=\"${valueNumeric}\"",
+            "    valueBoolean=\"${valueBoolean}\"",
+            "    valueDate=\"${valueDate}\"",
+            "    valueComputed=\"${valueComputed}\"",
+            "    valueBlobFile=\"${valueBlobFile}\"",
+            "    valueClobFile=\"${valueClobFile}\"",
+            "    encoding=\"${encoding}\"",
+            "    defaultValue=\"${defaultValue}\"",
+            "    defaultValueNumeric=\"${defaultValueNumeric}\"",
+            "    defaultValueBoolean=\"${defaultValueBoolean}\"",
+            "    defaultValueDate=\"${defaultValueDate}\"",
+            "    defaultValueComputed=\"${defaultValueComputed}\"",
+            "    autoIncrement=\"${autoIncrement}\"",
+            "    remarks=\"${remarks}\"",
+            "    beforeColumn=\"${beforeColumn}\"",
+            "    afterColumn=\"${afterColumn}\"",
+            "    position=\"${position}\"",
+            "/>"
+        ],
+        "description": "The “column” tag is a tag that is re-used throughout the Liquibase XML when column definitions and column information is needed. As a result, not all the attributes of column make sense in each context it is used in."
     }
 }

@@ -2,7 +2,7 @@
     "name": "liquibase-snippets",
     "displayName": "Liquibase Snippets",
     "description": "A VSCode extension that provides liquibase snippets.",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "publisher": "chris-rimmer",
     "icon": "images/icon.png",
     "repository": {

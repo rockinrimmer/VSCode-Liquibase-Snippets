@@ -1,7 +1,14 @@
 # Change Log
-All notable changes to the "vs-code-liquibase-snippets" extension will be documented in this file.
+All notable changes to the VSCode Liquibase Snippets extension will be documented in this file.
 
 ## [Unreleased]
+- JSON snippets
+- YAML snippets
+- Individual column attribute snippets
+
+## [1.1.0]
+### Added
+- Add column snippet with all attributes
 
 ## [1.0.1]
 ### Added

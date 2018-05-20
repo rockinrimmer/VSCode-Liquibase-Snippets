@@ -1,0 +1,31 @@
+sudo: false
+os:
+- linux
+language: node_js
+node_js:
+- 8
+env:
+  global:
+    secure: Zwczjwc2gqz/Xd8dkWyojrdK0nYVKk4SQbvNQ/aznQVGXJNy8vTok+NiNzIsIYKgdkWsZHtauNzxW8G+M8JFAjOURHQOKMlC1xIqlHMt0O7q93FdGSSkIsjQuSZKH6XjUI37bmS4rrBZUAilOKj8l+W1hdcKyVLJohwtL0FABY4RumVC5ry9BeAjZJyEATKtlvx5HnR04CHevp+PS5mTQ6gc8bafZ4YQXis2gpgLPP+r+lkqq6BedzU3IV4Itd8FFdZew88R+S2Y9q2mln95YxJ02jMguW9ZEOXz8m9PbYn3VWdmsZ3k+0PzwNUmferSQ9ryCmMecLYX7GFCwOvqYAWPKbPfP9o/rO1h6g+U/SsAsKvY/sGlmIOL0P3f8DURgDsSqFMBhqVcvinZapU4/+V6qSOu5HCyRuqokFKPnDirCwKwSguVGWVYuLRbT2BsoVjavyAz5QQb9teym6W/t2nirQM7Wm7pyAQglbLE25v6SyYyYYit7OtZ5i6YfsP/YNixC0RrLS2ZDlox5rktj3eUNF56jn3WN/PIY+T5Nww1KIhqcTUos6nVmDrqSweSe96lmzVJnYUP09LLSBGFjoqYQ6osnh0olhs6Ggjd8EuG9wGkSq9cFdpOcr9dwxYDCbMUckSEk6Ha/jw+fE2Li05p6STkf7F56eA3J0YOgCs=
+before_script:
+- npm install -g vsce;
+script:
+- vsce package;
+deploy:
+- provider: releases
+  api_key:
+    secure: a8b/2rVY2+MnPD2kGrcmM7lEFdz1TPQU+cdFOSynElDejd50zHR0uB5zySeITrXN5slA7/VcEiRPP4t2X4PujYdhqiE3FXDg/19mDMTaOC7vZ6wL21RSA3/buEW69FleFA+MVPFZ5KEx18ANJH0naeje5bE51/59ZrlPnpNjHUw8R/foFIxKOIdZMAb8B9NWEJXJB+y0K+Ir1P/lGN3JrfXQkwnenfaJ8tADuhYZXTAlRHhKsF2ZwsUFSG5wroO8M9O4cYvbpBu2IGpV9Z0irj+Kz1EbXGWc2aLcJvl8HM/AIQP4/O9JpszbWHVMFtLM067z39fvbNSZ8Rm+nLRakDXrm/Hk+2yQC6q6bU0RD8MJVDKG/CncygYiQhhURSHIzeLS0AK+qa9d3A7iVx0or8OTLjX8xjT2YvlgJRMIuguDu2yWyV+WM7qCLIK2OYZwFzLw3eoVDPgx6iiQnaBqjrffd02Q1ycu/U3buYEHWHji87VeJI/ZEMNBCz8J7qXw0bQWaBZDajKv+vIsyUJ2EuPv1/GJB/PomF3IZpKHnc/B9xEVMAIhh3AM6hxs1qB7RUwIbD5YuNWU3WR457E6ZG82urUByyXEMc+kW5voA7TDK82t5/HBhSK3yiE1w920lNi9/qYHOFneCpuFJpTaE5jM/ZeTL8YOK16SRfuTB6A=
+  file: "*.vsix"
+  file_glob: true
+  skip_cleanup: true
+  on:
+    repo: rockinrimmer/VSCode-Liquibase-Snippets
+    tags: true
+    condition: $TRAVIS_OS_NAME = linux
+- provider: script
+  script: vsce publish -p $VS_TOKEN
+  skip_cleanup: true
+  on:
+    repo: rockinrimmer/VSCode-Liquibase-Snippets
+    tags: true
+    condition: $TRAVIS_OS_NAME = linux
