@@ -3,6 +3,10 @@ All notable changes to the "vs-code-liquibase-snippets" extension will be docume
 
 ## [Unreleased]
 
+## [1.0.1]
+### Added
+- Add MIT License
+
 ## [1.0.0]
 ### Added
 - XML Liquibase Snippets
