@@ -7,6 +7,10 @@ All notable changes to the VSCode Liquibase Snippets extension will be documente
 - Individual column attribute snippets
 
 ## [1.1.0]
+### Fixed
+- Fixed sql snippet
+
+## [1.1.0]
 ### Added
 - Add column snippet with all attributes
 
