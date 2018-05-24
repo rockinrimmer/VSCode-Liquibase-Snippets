@@ -470,7 +470,7 @@
         "prefix": "sql",
         "body": [
             "<sql dbms=\"${dbms}\"",
-            "        endDelimiter=\"${;}\"",
+            "        endDelimiter=\"${end}\"",
             "        splitStatements=\"${true}\"",
             "        stripComments=\"${false}\">",
             "    ${0}",
