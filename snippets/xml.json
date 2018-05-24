@@ -573,5 +573,50 @@
             "/>"
         ],
         "description": "The “column” tag is a tag that is re-used throughout the Liquibase XML when column definitions and column information is needed. As a result, not all the attributes of column make sense in each context it is used in."
+    },
+    "Constraints nullable": {
+        "prefix": "constraintsNullable",
+        "body": [
+            "<constraints nullable=\"${false}\"/>"
+        ],
+        "description": "The “constraints” tag contains information about constraints on the column."
+    },
+    "Constraints primary key": {
+        "prefix": "constraintsPrimaryKey",
+        "body": [
+            "<constraints primaryKey=\"${true}\" primaryKeyName=\"${pk_}\"/>"
+        ],
+        "description": "The “constraints” tag contains information about constraints on the column."
+    },
+    "Constraints foreign key": {
+        "prefix": "constraintsForeignKey",
+        "body": [
+            "<constraints references=\"${table}(${column})\" foreignKeyName=\"${fk_}\"/>"
+        ],
+        "description": "The “constraints” tag contains information about constraints on the column."
+    },
+    "Constraints unique": {
+        "prefix": "constraintsUnique",
+        "body": [
+            "<constraints unique=\"${true}\" uniqueConstraintName=\"${name}\"/>"
+        ],
+        "description": "The “constraints” tag contains information about constraints on the column."
+    },
+    "Constraints All": {
+        "prefix": "constraintsAll",
+        "body": [
+            "<constraints nullable=\"${0:false}\"",
+            "   primaryKey=\"${1:true}\"",
+            "   primaryKeyName=\"${2:pk_}\"",
+            "   unique=\"${3:true}\"",
+            "   uniqueConstraintName=\"${4:uniqueConstraintName}\"",
+            "   references=\"${5:table}\"",
+            "   foreignKeyName=\"${6:fk_}\"",
+            "   deleteCascade=\"${7:false}\"",
+            "   deferrable=\"${8:false}\"",
+            "   initiallyDeferred=\"${9:false}\"",
+            "/>"
+        ],
+        "description": "The “constraints” tag contains information about constraints on the column."
     }
 }

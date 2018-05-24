@@ -6,6 +6,10 @@ All notable changes to the VSCode Liquibase Snippets extension will be documente
 - YAML snippets
 - Individual column attribute snippets
 
+## [1.2.0]
+### Added
+- Added constraint snippet
+
 ## [1.1.2]
 ### Fixed
 - Fixed sql snippet
