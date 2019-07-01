@@ -6,6 +6,10 @@ All notable changes to the VSCode Liquibase Snippets extension will be documente
 - YAML snippets
 - Individual column attribute snippets
 
+## [1.3.0]
+### Updated
+- Update XSD schema definition to version 3.6
+
 ## [1.2.0]
 ### Added
 - Added constraint snippet
