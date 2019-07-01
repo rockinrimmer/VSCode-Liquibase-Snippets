@@ -6,7 +6,7 @@ node_js:
 - 8
 env:
   global:
-    secure: Zwczjwc2gqz/Xd8dkWyojrdK0nYVKk4SQbvNQ/aznQVGXJNy8vTok+NiNzIsIYKgdkWsZHtauNzxW8G+M8JFAjOURHQOKMlC1xIqlHMt0O7q93FdGSSkIsjQuSZKH6XjUI37bmS4rrBZUAilOKj8l+W1hdcKyVLJohwtL0FABY4RumVC5ry9BeAjZJyEATKtlvx5HnR04CHevp+PS5mTQ6gc8bafZ4YQXis2gpgLPP+r+lkqq6BedzU3IV4Itd8FFdZew88R+S2Y9q2mln95YxJ02jMguW9ZEOXz8m9PbYn3VWdmsZ3k+0PzwNUmferSQ9ryCmMecLYX7GFCwOvqYAWPKbPfP9o/rO1h6g+U/SsAsKvY/sGlmIOL0P3f8DURgDsSqFMBhqVcvinZapU4/+V6qSOu5HCyRuqokFKPnDirCwKwSguVGWVYuLRbT2BsoVjavyAz5QQb9teym6W/t2nirQM7Wm7pyAQglbLE25v6SyYyYYit7OtZ5i6YfsP/YNixC0RrLS2ZDlox5rktj3eUNF56jn3WN/PIY+T5Nww1KIhqcTUos6nVmDrqSweSe96lmzVJnYUP09LLSBGFjoqYQ6osnh0olhs6Ggjd8EuG9wGkSq9cFdpOcr9dwxYDCbMUckSEk6Ha/jw+fE2Li05p6STkf7F56eA3J0YOgCs=
+    secure: Asp8wR0p43EBSYqe4Quvmmk5rnKqW2yKHKqp9Km2SYHnwnTfOaHO4RqabMvU7KUxFcw8b2Q9YZIA7ibGZHP14rCiPWQKQQzFCknwyWH3+EG68wYjQB29/u5EmT4l7msnj6zp0YAIc6GjcOV6uiZn18MA39zhiIXhFtOOVkOvZjOwOnIeOHBRy/G1GJeJwbisgUggfdXkFEj19bN6J0cqdmhvPXnSao9DcTfGj95jzRVIjj+YHKnMl+mJY61JhBqxxxJ+jpQZr14jeXp8mv4ilZzhY3U34w+FSx/8+bIf4tXY0WCQrtyOFTA6kTajjw6AG/GTiVfv0ZLZXoNTu/7lokulV7Stvgih8wIJOF0RfoKqNtPJjFEQFGrfDBDawzzxnS5wXtgjlc/pejJUWZvp8leQE1n4JBoOCMm/bRTYdo0vltDGBx0UE0EsoFzIdZNv3h8DZ+pe4+SePbIJoLNf8b7TCqRF5blpwb6k/zUn7reb5Am++JvB1twbRbzjisprGqkNadpxPSsy0lOXph9gYoEAvDu1dIL52kKEolrVvQmRCMRdjk5nZgu+SYqOuefaT6K7g9O8A6jBijl58TC8qmAcCrH/1KzQKhsZoQOwj93T9VlfNGgG14XW4OCTT/yTxqG02etgRU5Pio0dTiUJ3k08fDjTO8NqTNGQCQSoux0=
 before_script:
 - npm install -g vsce;
 script:
@@ -21,11 +21,11 @@ deploy:
   on:
     repo: rockinrimmer/VSCode-Liquibase-Snippets
     tags: true
-    condition: $TRAVIS_OS_NAME = linux
+    condition: "$TRAVIS_OS_NAME = linux"
 - provider: script
   script: vsce publish -p $VS_TOKEN
   skip_cleanup: true
   on:
     repo: rockinrimmer/VSCode-Liquibase-Snippets
     tags: true
-    condition: $TRAVIS_OS_NAME = linux
+    condition: "$TRAVIS_OS_NAME = linux"
